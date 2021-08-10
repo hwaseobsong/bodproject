@@ -33,28 +33,7 @@
                             </li>
                         </ul>
                         <ul class="nav-right" style="padding:0px; line-height:70px;">
-                            <li class="header-notification">
-                                <a href="#!" class="waves-effect waves-light">
-                                    <i class="ti-bell"></i>
-                                    <span class="badge bg-c-red"></span>
-                                </a>
-                                <ul class="show-notification">
-                                    <li>
-                                        <h6>알림</h6>
-                                        <label class="label label-danger">New</label>
-                                    </li>
-                                    <li class="waves-effect waves-light">
-                                        <div class="media">
-                                            <img class="d-flex align-self-center img-radius" src="${pageContext.request.contextPath}/resources/assets/images/avatar-2.jpg" alt="Generic placeholder image">
-                                            <div class="media-body">
-                                                <h5 class="notification-user">John Doe</h5>
-                                                <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                                <span class="notification-time">30 minutes ago</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
+                            
                             
                             <li class="header-notification" onclick="friendRequestTop('${sessionScope.loginId}')">
                                 <a href="#!" class="waves-effect waves-light">

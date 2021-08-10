@@ -322,15 +322,14 @@ body {
 																		<div class="swiper-slide">
 																			<div class="swiper-zoom-container">
 																				<c:choose>
-																				<c:when test="${fn:contains(photo,'.jpg')}">
-																				<img
-																					style="width: 100%; height: 600px; object-fit: cover;"
-																					src="${pageContext.request.contextPath}/resources/uploadImg/${photo}" />
+																				<c:when test="${fn:contains(photo,'.mp4')}">
+																					<video src="${pageContext.request.contextPath}/resources/uploadImg/${photo}" style="width: 100%; height: 600px;" controls autoplay="autoplay">
+																					</video>
 																				</c:when>
 																				<c:otherwise>
-																					<video src="${pageContext.request.contextPath}/resources/uploadImg/${photo}" style="width: 100%; height: 600px;" controls autoplay="autoplay">
-																						
-																					</video>
+																					<img
+																						style="width: 100%; height: 600px; object-fit: cover;"
+																						src="${pageContext.request.contextPath}/resources/uploadImg/${photo}" />
 																				</c:otherwise>
 																				</c:choose>
 																			</div>
