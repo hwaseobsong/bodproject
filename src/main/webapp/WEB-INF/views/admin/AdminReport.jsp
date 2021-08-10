@@ -84,7 +84,7 @@
 									    		<div class="row"  style="margin: 0 0 0 20%;">
 									    		<div class="col-lg-12">
 									    		<div class="row" style="margin-bottom:5px;">
-													<h3 style="padding:5px; color:#777; border-left:5px solid #B1C763; font-weight:500;">&nbsp;신고 목록</h3>
+													<h3 style="padding:5px; color:#777; border-left:5px solid #80a1c2; font-weight:500;">&nbsp;신고 목록</h3>
 												</div>
 									    		<div class="card" style="border:none;">
 		                                            <div class="card-block table-border-style">
@@ -100,14 +100,18 @@
 							                                        </tr>
 		                                                        </thead>
 		                                                        <tbody>
+		                                                        
+		                                                        <c:forEach items="${report}" var="report">
 		                                                              <tr>
 																		<td>${report.reporttarget }</td>
 																		<td>${report.reason }</td>
 																		<td>${report.reportdate }</td>
 																		<td>${report.reporter }</td>
 																		<td><button class="groupBtn2" style="width:100px" >삭제</button></td>
-																	</tr>
+																	</tr>  
+																	</c:forEach>
 		                                                        </tbody>
+		                                                      
 		                                                    </table>
 		                                                </div>
 		                                            </div>

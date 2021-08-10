@@ -159,7 +159,7 @@
 																		</tr>
 																		<c:forEach items="${friendRequestList}" var="friendRequestList">
 																		<tr>
-																			<td><img class="img-radius" style="height: 70px; width: 70px;" alt="" src="${pageContext.request.contextPath}/resources/uploadImg/userimg/${friendRequestList.mprofile}"></td>
+																			<td><img class="img-radius" style="height: 70px; width: 70px;" alt="" src="${friendRequestList.mprofile}"></td>
 																			<td>${friendRequestList. mid}</td>
 																			<td><button class="groupBtn2" style="width: 100px" onclick="acceptFriend('${friendRequestList.mid}', '${sessionScope.loginId}')">수락</button></td>
 																			<td><button class="groupBtn2" style="width: 100px" onclick="refuseFriend('${friendRequestList.mid}', '${sessionScope.loginId}')">거절</button></td>
@@ -183,7 +183,7 @@
 																		</tr>
 																		<c:forEach items="${friendList}" var="friendList">
 																		<tr>
-																			<td><img class="img-radius" style="height: 70px; width: 70px;" alt="" src="${pageContext.request.contextPath}/resources/uploadImg/userimg/${friendList.mprofile}"></td>
+																			<td><img class="img-radius" style="height: 70px; width: 70px;" alt="" src="${friendList.mprofile}"></td>
 																			<td>${friendList.mnick}</td>
 																			<td><button class="groupBtn2" style="width: 100px" onclick="moveChatting('${friendList.mnick}', '${sessionScope.loginNick}')">채팅</button></td>
 																			<td><button class="groupBtn2" style="width: 100px" onclick="deleteFriend('${friendList.mid}', '${sessionScope.loginId}')">삭제</button></td>

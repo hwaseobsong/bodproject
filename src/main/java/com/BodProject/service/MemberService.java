@@ -51,7 +51,7 @@ public class MemberService {
 		if(userProfile.contains("http")){
 			session.setAttribute("loginPf", userProfile);
 		}else {
-			userProfile = "/controller/resources/uploadImg/userimg/"+userProfile;
+			userProfile = "/resources/uploadImg/userimg/"+userProfile;
 		}
 		session.setAttribute("loginPf", userProfile);
 		
@@ -118,7 +118,7 @@ public String moveMidCheck(String inputMid) {
 			UUID uuid = UUID.randomUUID();
 			
 			String mfilename = uuid.toString() + "_" + mfile.getOriginalFilename();
-			String savePath = "C:\\Users\\0joo\\Documents\\workspace-spring-tool-suite-4-4.10.0.RELEASE\\BodProject\\src\\main\\webapp\\resources\\uploadImg\\userimg";
+			String savePath = "C:\\springworkspace\\BodProject\\src\\main\\webapp\\resources\\uploadImg\\userimg";
 			
 			if(!mfile.isEmpty()) {
 				mfile.transferTo(new File(savePath, mfilename));
@@ -152,7 +152,7 @@ public String moveMidCheck(String inputMid) {
 	//개인정보 수정
 	public ModelAndView modifyMember(MemberDto modifyMem) throws IllegalStateException, IOException {
 		ModelAndView mav = new ModelAndView();
-		String savePath = "C:\\Users\\0joo\\Documents\\workspace-spring-tool-suite-4-4.10.0.RELEASE\\BodProject\\src\\main\\webapp\\resources\\uploadImg\\userimg";
+		String savePath = "C:\\springworkspace\\BodProject\\src\\main\\webapp\\resources\\uploadImg\\userimg";
 		
 		//받아온 프로필 확인
 		MultipartFile modiProfile = modifyMem.getMfile();
@@ -198,7 +198,7 @@ public String moveMidCheck(String inputMid) {
 		if(userProfile.contains("http")){
 			session.setAttribute("loginPf",userProfile);
 		}else {
-			userProfile = "/controller/resources/uploadImg/userimg/"+userProfile;
+			userProfile = "/resources/uploadImg/userimg/"+userProfile;
 		}
 		session.setAttribute("loginPf", userProfile);
 		
@@ -250,7 +250,7 @@ public String moveMidCheck(String inputMid) {
 			for(int i = 0; i < friendList.size(); i++) {
 				if(friendList.get(i).getMprofile().contains("http")) {
 				}else {
-					String mprofile = "/controller/resources/uploadImg/userimg/"+friendList.get(i).getMprofile();
+					String mprofile = "/resources/uploadImg/userimg/"+friendList.get(i).getMprofile();
 					friendList.get(i).setMprofile(mprofile);
 				}
 				
@@ -258,9 +258,9 @@ public String moveMidCheck(String inputMid) {
 				String friendId = friendList.get(i).getMid();
 				String fcheckResult = mdao.friendCheck(loginId,friendId);
 				if(fcheckResult != null) {
-					friendList.get(i).setFriendcheck(1);
-				}else {
 					friendList.get(i).setFriendcheck(0);
+				}else {
+					friendList.get(i).setFriendcheck(1);
 				}
 			}
 			
@@ -268,16 +268,32 @@ public String moveMidCheck(String inputMid) {
 	}
 	
 	//7월23일
-		public ModelAndView moveFriendRequest(String userId) {
-			// TODO Auto-generated method stub
-			ModelAndView mav = new ModelAndView();
-			ArrayList<MemberDto> friendList = mdao.getFriendList(userId);
-			ArrayList<MemberDto> friendRequestList = mdao.getFriendRequestList(userId);		
-			mav.addObject("friendRequestList", friendRequestList);
-			mav.addObject("friendList", friendList);
-			mav.setViewName("member/myFriendList");
-			return mav;
-		}
+	public ModelAndView moveFriendRequest(String userId) {
+        // TODO Auto-generated method stub
+        ModelAndView mav = new ModelAndView();
+        ArrayList<MemberDto> friendList = mdao.getFriendList(userId);
+        for(int i = 0; i < friendList.size(); i++) {
+        	System.out.println(friendList.get(i).getMprofile());
+           if(friendList.get(i).getMprofile().contains("http")) {
+        	   
+           }else {
+              String mprofile = "/resources/uploadImg/userimg/"+friendList.get(i).getMprofile();
+              friendList.get(i).setMprofile(mprofile);
+           }            
+        }
+        ArrayList<MemberDto> friendRequestList = mdao.getFriendRequestList(userId);
+        for(int j = 0; j < friendRequestList.size(); j++) {
+           if(friendRequestList.get(j).getMprofile().contains("http")) {
+           }else {
+              String mprofile ="/resources/uploadImg/userimg/"+friendRequestList.get(j).getMprofile();
+              friendRequestList.get(j).setMprofile(mprofile);
+           }            
+        }
+        mav.addObject("friendRequestList", friendRequestList);
+        mav.addObject("friendList", friendList);
+        mav.setViewName("member/myFriendList");
+        return mav;
+     }
 
 		public ModelAndView acceptFriend(String friendId, String userId) {
 			// TODO Auto-generated method stub
@@ -332,7 +348,7 @@ public String moveMidCheck(String inputMid) {
 	         if(memberInfo.getMprofile().contains("http")) {
 	            
 	         }else {
-	            String mprofile = "/controller/resources/uploadImg/userimg/"+memberInfo.getMprofile();
+	            String mprofile = "/resources/uploadImg/userimg/"+memberInfo.getMprofile();
 	            memberInfo.setMprofile(mprofile);
 	         }
 	         System.out.println("minfo: "+memberInfo);
@@ -369,7 +385,7 @@ public String moveMidCheck(String inputMid) {
 		        if(memberInfo.getMprofile().contains("http")) {
 		            
 		        }else {
-		            String mprofile = "/controller/resources/uploadImg/userimg/"+memberInfo.getMprofile();
+		            String mprofile = "/resources/uploadImg/userimg/"+memberInfo.getMprofile();
 		            memberInfo.setMprofile(mprofile);
 		        }
 		        mav.addObject("member", memberInfo);
@@ -398,7 +414,7 @@ public String moveMidCheck(String inputMid) {
 				if(userProfile.contains("http")){
 					session.setAttribute("loginPf", userProfile);
 				}else {
-					userProfile = "/controller/resources/uploadImg/userimg/"+userProfile;
+					userProfile = "/resources/uploadImg/userimg/"+userProfile;
 				}
 				session.setAttribute("loginPf", userProfile);
 				

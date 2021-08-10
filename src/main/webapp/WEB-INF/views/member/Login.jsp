@@ -162,7 +162,7 @@
                                     <div class="row m-t-30 ">
                                     	<div class="col-md-12 text-center">
                                         	<span class="text-center"  style="font-align:center;">계정이 없으신가요? </span>
-                                            <a href="moveJoinForm" class="f-w-500" style="color:#B1C763; font-size:15px"> 가입하기</a>
+                                            <a href="moveJoinForm" class="f-w-500" style="color:#80a1c2; font-size:15px"> 가입하기</a>
                                     	</div>
                                     </div>
                                 </div>

@@ -46,11 +46,13 @@
 </head>
 <body>
 <div class="loader"> </div>
-<h1>사진파일 업로드 중입니다..</h1>
+<h3 style="text-align:center; ">사진파일 업로드 중입니다..</h3>
 </body>
 <script type="text/javascript">
 
-/* $(document).ready(function(){
+ $(document).ready(function(){
+	var gcode = '${gcode}';
+	console.log(gcode);
 	$.ajax({
 		type : "get",
 		url : "uploadtime",
@@ -58,21 +60,20 @@
 		data : {"filename" : '${filename}'},
 		success : function(result){
 			console.log(result);
-			var gcode = '${param.gcode}';
 			if(result == "exist"){
 				if(gcode != ''){
 					setTimeout(function(){
-						location.href="moveGroupPage?gcode="+'${param.gcode}';					
-					}, 1000);
+						location.href="moveGroupPage?gcode="+gcode;					
+					}, 2000);
 				}else{
 					setTimeout(function(){
 						location.href="boardList";					
-					}, 1000);					
+					}, 2000);					
 				}
 			}
 		}
 	});
-}); */
+}); 
 
 
 </script>

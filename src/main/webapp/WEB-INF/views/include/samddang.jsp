@@ -41,10 +41,6 @@
   		<i class="fa fa-circle fa-stack-2x" style="color:#95AECB;"></i>
   		<i class="fas fa-arrow-up fa-stack-1x fa-inverse"></i>
 	 </span><br>
-	 <span class="fa-stack fa-lg OIcon" id="chatIcon" onclick="location.href='#'" >
-  		<i class="fa fa-circle fa-stack-2x" style="color:#95AECB;"></i>
-  		<i class="fas fa-comments fa-stack-1x fa-inverse"></i>
-	 </span><br>
 	 <span class="fa-stack fa-lg OIcon" id="writeIcon" onclick="location.href='moveBoardWriteForm'" >
   		<i class="fa fa-circle fa-stack-2x" style="color:#95AECB;"></i>
   		<i class="fas fa-edit fa-stack-1x fa-inverse"></i>
@@ -65,22 +61,15 @@
   			$("#textBox").css("display","none");
   		});
   	
-  		$("#chatIcon").hover(function(){
-  			$("#textBox").css("display","inline-block").css("margin-top","50px");
-  			$("#iconText").html("채팅");
-  		},function(){
-  			$("#textBox").css("display","none");
-  		});
-  		
   		$("#writeIcon").hover(function(){
-  			$("#textBox").css("display","inline-block").css("margin-top","90px");
+  			$("#textBox").css("display","inline-block").css("margin-top","50px");
   			$("#iconText").html("글쓰기");
   		},function(){
   			$("#textBox").css("display","none");
   		});
   		
   		$("#searchIcon").hover(function(){
-  			$("#textBox").css("display","inline-block").css("margin-top","135px");
+  			$("#textBox").css("display","inline-block").css("margin-top","90px");
   			$("#iconText").html("해시태그 검색");
   		},function(){
   			$("#textBox").css("display","none");

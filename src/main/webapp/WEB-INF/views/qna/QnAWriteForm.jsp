@@ -135,7 +135,7 @@
 									    		<div class="col-lg-8">
                                                 <!-- Basic Form Inputs card start -->
                                                 <div class="row" style="margin-bottom:5px;">
-														<h3 style="padding:5px; color:#777; border-left:5px solid #B1C763; font-weight:500;">&nbsp;QnA 글쓰기</h3>
+														<h3 style="padding:5px; color:#777; border-left:5px solid #80a1c2; font-weight:500;">&nbsp;QnA 글쓰기</h3>
 													</div>
                                                 <div class="card">
                                                     <div class="card-block">

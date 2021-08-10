@@ -314,15 +314,14 @@ table td {
 																		<div class="swiper-slide">
 																			<div class="swiper-zoom-container">
 																				<c:choose>
-																				<c:when test="${fn:contains(photo,'.jpg')}">
-																				<img
-																					style="width: 100%; height: 600px; object-fit: cover;"
-																					src="${pageContext.request.contextPath}/resources/uploadImg/${photo}" />
+																				<c:when test="${fn:contains(photo,'.mp4')}">
+																					<video src="${pageContext.request.contextPath}/resources/uploadImg/${photo}" style="width: 100%; height: 600px;" controls autoplay="autoplay">
+																					</video>
 																				</c:when>
 																				<c:otherwise>
-																					<video src="${pageContext.request.contextPath}/resources/uploadImg/${photo}" style="width: 100%; height: 600px;" controls autoplay="autoplay">
-																						
-																					</video>
+																					<img
+																						style="width: 100%; height: 600px; object-fit: cover;"
+																						src="${pageContext.request.contextPath}/resources/uploadImg/${photo}" />
 																				</c:otherwise>
 																				</c:choose>
 																			</div>
@@ -408,7 +407,7 @@ table td {
 																					<p
 																						style="font-size: 5px; text-align: right; margin: 0px;">&nbsp;</p>
 																					<div class="d-inline-block">
-																						<textarea class="commreply" rows="1" cols="95"
+																						<textarea class="commreply" rows="1" cols="85"
 																							name="ccomment"
 																							id="textarea${boardList.bcode}"
 																							onkeyup="javascript:textlimit(this)"></textarea>
@@ -543,7 +542,7 @@ function textlimit(obj){
 								output += "<img src='"+commList[i].mprofile+"' alt='user image' class='img-radius img-30 align-top m-r-15' style='width:30px; height:30px;'>";
 								output += "<span style='font-size:15px;'>"+commList[i].cmnick+"</span><span style='font-size:5px; text-align:right; margin-left:30px;'>"+commList[i].cdate+"</span>";
 								output += "<div class='d-inline-block'>";
-								output += "<textarea class='commreply' rows=2 cols=95 style='overflow=hidden; border:none; margin-top:8px;' disabled>"+commList[i].ccomment + "</textarea>";
+								output += "<textarea class='commreply' rows='2' cols='85' style='overflow=hidden; border:none; margin-top:8px;' disabled>"+commList[i].ccomment + "</textarea>";
 								output += "<p style='text-align:right;'>";
 								output += "<i class='"+commList[i].likemodify+"' onclick='boardlike(\""+commList[i].ccode+"\")' id='commlike"+commList[i].ccode+"' style='color:black;'></i><span>&nbsp;</span><span id='updatecommlikecount"+commList[i].ccode+"'>"+commList[i].likecount + "</span>";
 								output += "<span>&nbsp;</span><span class='commBtn' style='float:left;' onclick='showReply(\""+commList[i].ccode+"\",\""+commList[i].cbcode+"\")'><span id='replycount"+commList[i].ccode+"'>"+commList[i].replycount + "</span>";
@@ -581,7 +580,7 @@ function textlimit(obj){
 							output += "<img src='"+replyList[j].mprofile+"' alt='user image' class='img-radius img-30 align-top m-r-15' style='width:30px; height:30px;'>";
 							output += "<span style='font-size:15px;'>"+replyList[j].remnick+"</span><span style='font-size:5px; text-align:right; margin-left:30px;'>"+replyList[j].redate+"</span>";
 							output += "<div class='d-inline-block'>";
-							output += "<textarea class='commreply' rows=2 cols=80 style='overflow=hidden; border:none; margin-top:8px;' disabled>"+replyList[j].recomment+"</textarea>";
+							output += "<textarea class='commreply' rows='2' cols='75' style='overflow=hidden; border:none; margin-top:8px;' disabled>"+replyList[j].recomment+"</textarea>";
 							output += "<p style='text-align:right;'>";
 							output += "<i class='"+replyList[j].likemodify+"' onclick='boardlike(\""+replyList[j].recode+"\")' id='replylike"+replyList[j].recode+"' style='color:black;'></i><span>&nbsp;</span><span id='updatereplylikecount"+replyList[j].recode+"'>"+ replyList[j].likecount+"</span>";
 							output += "</p></div></div></td></tr>";

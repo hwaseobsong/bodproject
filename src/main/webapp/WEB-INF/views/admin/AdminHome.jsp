@@ -162,7 +162,7 @@
 
 																	<c:forEach items="${member}" var="member">
 																		<tr style="height: 100px; width: auto">
-																			<td><img class="img-radius" style="height: 70px; width: 70px;" alt="" src="${pageContext.request.contextPath}/resources/uploadImg/userimg/${member.mprofile}"></td>
+																			<td><img class="img-radius" style="height: 70px; width: 70px;" alt="" src="${member.mprofile}"></td>
 																			<td>${member.mid}</td>
 																			<td>${member.mname }</td>
 																			<td>${member.mnick }</td>

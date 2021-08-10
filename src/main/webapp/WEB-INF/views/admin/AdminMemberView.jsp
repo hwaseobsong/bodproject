@@ -160,7 +160,7 @@
 																			<div class="badge-box" style="text-align: center;">
 																				<img class="img-80 img-radius mCS_img_loaded"
 																					style="height: 180px; width: 180px;" alt=""
-																					src="${pageContext.request.contextPath}/resources/uploadImg/userimg/${member.mprofile}">
+																					src="${member.mprofile}">
 																			</div>
 																		</div>
 																		<div class="col-lg-8">

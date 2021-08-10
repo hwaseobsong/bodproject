@@ -61,7 +61,7 @@ public class BoardService {
 			boardList.get(i).setPhoto(photoList);
 			if(boardList.get(i).getMprofile().contains("http")) {
 			}else {
-				String mprofile = "/controller/resources/uploadImg/userimg/"+boardList.get(i).getMprofile();
+				String mprofile = "/resources/uploadImg/userimg/"+boardList.get(i).getMprofile();
 				boardList.get(i).setMprofile(mprofile);
 			}
 			boardList.get(i).setCommcount(bdao.getCommcount(bcode));
@@ -110,7 +110,6 @@ public class BoardService {
 		}
 		System.out.println("boardList 확인 : " + boardList);
 		mav.addObject("boardList", boardList);
-		
 		mav.setViewName("board/BoardList");
 		return mav;
 	}
@@ -253,11 +252,11 @@ public class BoardService {
 				}
 
 				String[] filename = bdao.getPhotoList(gbCode);
-				System.out.println("filename : " + filename[0] + filename[1] + filename[2]);
 				Gson gson = new Gson();
 				String filename_json = gson.toJson(filename);
 				mav.addObject("filename", filename_json);
-				mav.setViewName("include/loading?gcode="+board.getBgcode());
+				mav.addObject("gcode", board.getBgcode());
+				mav.setViewName("include/loading");
 				
 			}
 			return mav;
@@ -437,7 +436,7 @@ public class BoardService {
 		for(int i = 0; i < commList.size(); i++) {
 			if(commList.get(i).getMprofile().contains("http")) {
 			}else {
-				String mprofile = "/controller/resources/uploadImg/userimg/"+commList.get(i).getMprofile();
+				String mprofile = "/resources/uploadImg/userimg/"+commList.get(i).getMprofile();
 				commList.get(i).setMprofile(mprofile);
 			}
 			commList.get(i).setReplycount(bdao.getReplyCount(commList.get(i).getCcode()));
@@ -518,7 +517,7 @@ public class BoardService {
 		for(int i = 0; i < replyList.size(); i++) {
 			if(replyList.get(i).getMprofile().contains("http")) {
 			}else {
-				String mprofile = "/controller/resources/uploadImg/userimg/"+replyList.get(i).getMprofile();
+				String mprofile = "/resources/uploadImg/userimg/"+replyList.get(i).getMprofile();
 				replyList.get(i).setMprofile(mprofile);
 			}
 			
@@ -622,7 +621,7 @@ public class BoardService {
        MemberDto userInfo = bdao.getUserInfo(userId);
        if(userInfo.getMprofile().contains("http")) {
        }else {
-          String mprofile = "/controller/resources/uploadImg/userimg/"+userInfo.getMprofile();
+          String mprofile = "/resources/uploadImg/userimg/"+userInfo.getMprofile();
           userInfo.setMprofile(mprofile);
        }
        //로그인회원과 보드회원이 친구인지 확인
@@ -652,7 +651,7 @@ public class BoardService {
      				if(boardList.get(i).getMprofile().contains("http")) {
      					
      				}else {
-     					String mprofile = "/controller/resources/uploadImg/userimg/"+boardList.get(i).getMprofile();
+     					String mprofile = "/resources/uploadImg/userimg/"+boardList.get(i).getMprofile();
      					boardList.get(i).setMprofile(mprofile);
      					
      				}
@@ -721,7 +720,7 @@ public class BoardService {
        MemberDto myInfo = bdao.getMyInfo(loginId);
        if(myInfo.getMprofile().contains("http")) {
        }else {
-          String mprofile = "/controller/resources/uploadImg/userimg/"+myInfo.getMprofile();
+          String mprofile = "/resources/uploadImg/userimg/"+myInfo.getMprofile();
           myInfo.setMprofile(mprofile);
        }
        int friendNum = bdao.getFriendNum(loginId);
@@ -739,7 +738,7 @@ public class BoardService {
 				if(boardList.get(i).getMprofile().contains("http")) {
 					
 				}else {
-					String mprofile = "/controller/resources/uploadImg/userimg/"+boardList.get(i).getMprofile();
+					String mprofile = "/resources/uploadImg/userimg/"+boardList.get(i).getMprofile();
 					boardList.get(i).setMprofile(mprofile);
 					
 				}
@@ -804,7 +803,7 @@ public class BoardService {
        MemberDto myInfo = bdao.getMyInfo(loginId);
        if(myInfo.getMprofile().contains("http")) {
        }else {
-          String mprofile = "/controller/resources/uploadImg/userimg/"+myInfo.getMprofile();
+          String mprofile = "/resources/uploadImg/userimg/"+myInfo.getMprofile();
           myInfo.setMprofile(mprofile);
        }
        int friendNum = bdao.getFriendNum(loginId);
@@ -865,7 +864,7 @@ public class BoardService {
        if(userProfile.contains("http")){
           
        }else {
-          userProfile = "/controller/resources/uploadImg/userimg/"+userProfile;
+          userProfile = "/resources/uploadImg/userimg/"+userProfile;
        }
        session.setAttribute("loginPf", userProfile);
        
@@ -889,7 +888,7 @@ public class BoardService {
 		for(int i = 0; i<searchFriendList.size(); i++) {
 			if(searchFriendList.get(i).getUserprofile().contains("http")) {	
 			}else {
-				String mprofile = "/controller/resources/uploadImg/userimg/"+searchFriendList.get(i).getUserprofile();
+				String mprofile = "/resources/uploadImg/userimg/"+searchFriendList.get(i).getUserprofile();
 				searchFriendList.get(i).setUserprofile(mprofile);
 			}			
 		}
@@ -961,7 +960,7 @@ public class BoardService {
 	         if(boardList.get(i).getMprofile().contains("http")) {
 	            
 	         }else {
-	            String mprofile = "/controller/resources/uploadImg/userimg/"+boardList.get(i).getMprofile();
+	            String mprofile = "/resources/uploadImg/userimg/"+boardList.get(i).getMprofile();
 	            boardList.get(i).setMprofile(mprofile);
 	            
 	         }
@@ -1025,7 +1024,7 @@ public class BoardService {
 		for(int i = 0; i < likelist.size(); i++) {
 			if(likelist.get(i).getMprofile().contains("http")) {
 			}else {
-				String mprofile = "/controller/resources/uploadImg/userimg/"+likelist.get(i).getMprofile();
+				String mprofile = "/resources/uploadImg/userimg/"+likelist.get(i).getMprofile();
 				likelist.get(i).setMprofile(mprofile);
 			}			
 		}

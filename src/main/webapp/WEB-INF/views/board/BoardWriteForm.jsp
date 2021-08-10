@@ -250,7 +250,7 @@
 															&nbsp;<i class="fas fa-tags" style="color:#80A1C2;"></i><span>&nbsp;&nbsp;</span>
 															<input type="text" id="addtag" placeholder=" 태그 추가">
 															<!-- 해시태그 끝-->
-															<input type="hidden" value="${sessionScope.loginNick}">	
+															<input type="hidden" value="${sessionScope.loginNick}" id="userNick">	
 														</div>
 														<hr>
 													</div>
@@ -262,7 +262,8 @@
 															<input multiple="multiple" type="file" id="bphoto" name="bphotofile[]" style="display: none;" >
 														</div>
 														<div class="col-sm-6">
-															<input type="submit" class="groupBtn" style="width: 100%; height: auto;" value="게시">
+															<input type="hidden" id="sessionId" value="">
+															<input type="submit" class="groupBtn" style="width: 100%; height: auto;" value="게시" onclick="alarm()">
 														</div>
 													</div>
 												</div>
@@ -438,7 +439,8 @@
         
 	});
 	
-	
+    
+
 		
 	
 </script>

@@ -1,13 +1,16 @@
 package com.BodProject.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
-		
+
 import com.BodProject.dao.ChatDao;
 import com.BodProject.dto.ChattingDto;
 import com.BodProject.dto.ChattingRoomDto;
@@ -22,8 +25,7 @@ public class ChatService {
 		// TODO Auto-generated method stub
 		ModelAndView mav = new ModelAndView();
 		System.out.println("moveChatting service 실행");
-		System.out.println("friendNick , loginNick : " + friendNick + " / " + loginNick);
-		String myChattingRoom[] = cdao.getMyChattingRoom(loginNick);		
+		System.out.println("friendNick , loginNick : " + friendNick + " / " + loginNick);	
 		String roomCode = cdao.getRoomCode(friendNick, loginNick);
 		if(roomCode == null) {
 			String maxRoomNumber = cdao.getMaxRoomCode();
@@ -50,6 +52,7 @@ public class ChatService {
 		//채팅내역 select
 		ArrayList<ChattingDto> chattingList = cdao.getChattIngList(roomCode);
 		System.out.println(chattingList);
+		System.out.println("roomcode : " + roomCode);
 		mav.addObject("chattingList", chattingList);
 		mav.addObject("roomCode", roomCode);
 		mav.addObject("friendNick", friendNick);
@@ -57,10 +60,25 @@ public class ChatService {
 		return mav;
 	}
 
-	public String[] getChattingList(String loginNick) {
-		// TODO Auto-generated method stub		
-		String[] chattingFriendList = cdao.getChattingFriendList(loginNick);
-		return chattingFriendList;
+	public ArrayList<ChattingDto> getChattingList(String loginNick) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<ChattingDto> chattingList = new ArrayList<ChattingDto>();
+		ArrayList<ChattingRoomDto> chattingRoomList = cdao.getChattingRoomCodeList(loginNick);
+		System.out.println("chattingRoomList.size : " + chattingRoomList.size());
+		for(int i = 0; i < chattingRoomList.size(); i++) {
+			String roomCode = chattingRoomList.get(i).getRoomcode();
+			System.out.println("roomCode : " + roomCode);
+			ChattingDto cdto = cdao.getLastChat(roomCode, loginNick);
+
+			if (cdto.getChmprofile().contains("http")) {
+			} else {
+				String mprofile = "/resources/uploadImg/userimg/" + cdto.getChmprofile();
+				cdto.setChmprofile(mprofile);
+			}
+			chattingList.add(cdto);			
+		}
+		return chattingList;
 	}
 
 	public int saveMsg(String userNick, String msg, String roomCode) {

@@ -13,8 +13,10 @@ import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.BodProject.dto.ChattingDto;
 import com.BodProject.dto.ChattingRoomDto;
 import com.BodProject.service.ChatService;
+import com.google.gson.Gson;
 
 
 @Controller
@@ -31,11 +33,13 @@ public class ChatController {
 			return mav;
 		}
 		
-		@RequestMapping("/chattingFriendList")
-		public @ResponseBody String[] chattingFriendList(String loginNick) {
-			System.out.println("chattingFriendList controller 실행");
-			String[] chattingFriendList = csvc.getChattingList(loginNick);
-			return chattingFriendList;
+		@RequestMapping("/chattingList")
+		public @ResponseBody String chattingList(String loginNick) {
+			System.out.println("chattingList controller 실행");
+			ArrayList<ChattingDto> chattingList = csvc.getChattingList(loginNick);
+			Gson gson = new Gson();
+			String json_chattingList = gson.toJson(chattingList);
+			return json_chattingList;
 		}
 		
 		@RequestMapping(value= "/saveMsg")

@@ -119,14 +119,17 @@ public class GroupService {
 		
 		//추천 그룹
 		ArrayList<String> groupName = gdao.getUserGroupName(loginId);
-		String randomName = "%"+groupName.get(0)+"%";
-		System.out.println("랜덤 그룹명 : "+randomName);
-		ArrayList<GroupPageDto> recomGroup = gdao.recomGroup(randomName,loginId);
-		
-		if(recomGroup.size() > 0) {
-			mav.addObject("recomGroup", recomGroup);
+		if(groupName.size() > 0) {
+			
+			String randomName = "%"+groupName.get(0)+"%";
+			System.out.println("랜덤 그룹명 : "+randomName);
+			ArrayList<GroupPageDto> recomGroup = gdao.recomGroup(randomName,loginId);
+			
+			if(recomGroup.size() > 0) {
+				mav.addObject("recomGroup", recomGroup);
+			}
+			
 		}
-		
 		ArrayList<GroupPageDto> groupList = gdao.getGroupList();
 		
 		
@@ -212,7 +215,7 @@ public class GroupService {
 				if(boardList.get(i).getMprofile().contains("http")) {
 					
 				}else {
-					String mprofile = "/controller/resources/uploadImg/userimg/"+boardList.get(i).getMprofile();
+					String mprofile = "/resources/uploadImg/userimg/"+boardList.get(i).getMprofile();
 					boardList.get(i).setMprofile(mprofile);
 					
 				}
@@ -279,7 +282,7 @@ public class GroupService {
 		for(int i = 0; i < gMemList.size(); i++) {
 			if(gMemList.get(i).getMprofile().contains("http")) {
 			}else {
-				String mprofile = "/controller/resources/uploadImg/userimg/"+gMemList.get(i).getMprofile();
+				String mprofile = "/resources/uploadImg/userimg/"+gMemList.get(i).getMprofile();
 				gMemList.get(i).setMprofile(mprofile);
 			}
 			

@@ -130,7 +130,7 @@
 									    		<div class="row">
 									    		<div class="col-lg-8">
 									    		<div class="row" style="margin-bottom:5px;">
-													<h3 style="padding:5px; color:#777; border-left:5px solid #B1C763; font-weight:500;">&nbsp;QnA리스트</h3>
+													<h3 style="padding:5px; color:#777; border-left:5px solid #80a1c2; font-weight:500;">&nbsp;QnA리스트</h3>
 													<div style="position:absolute; top:10px; right:15px; width:20px; height:auto;" >
 														<nav>
 														
@@ -140,7 +140,7 @@
 														            <div class="dropdown-content_group2">
 														            <c:if test="${sessionScope.loginId != admin}">
 										                 				<a href="moveQnAWriteForm">글쓰기</a>
-										                    			<a href="#layer2">신고하기</a>
+										                    		
 										                    		</c:if>
 										                			</div>		
 														        </li>

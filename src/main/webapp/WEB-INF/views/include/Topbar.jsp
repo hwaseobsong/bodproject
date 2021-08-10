@@ -40,7 +40,7 @@
                                 </a>
                                 <ul class="show-notification">
                                     <li>
-                                        <h6>Notifications</h6>
+                                        <h6>알림</h6>
                                         <label class="label label-danger">New</label>
                                     </li>
                                     <li class="waves-effect waves-light">
@@ -199,31 +199,35 @@
             	location.reload();
             }
             
-            function chattingList(loginNick){            	
+           
+            
+            function chattingList(loginNick){
+            	console.log("topbar 채팅 목록 클릭");
             	var output = "";
             	$("#chattingListArea").html("");
             	$.ajax({
             		type : "post",
-            		url : "chattingFriendList",
+            		url : "chattingList",
             		data : {"loginNick" : loginNick},
             		dataType : "json",
-            		async: false,
-            		success : function(chattingFriendList){            			
-            			if(chattingFriendList != null){
-            				for(var i in chattingFriendList){            					           					            					
-            					output += "<li class='waves-effect waves-light' onclick='moveChatting(\""+chattingFriendList[i]+"\", \""+loginNick+"\")'>";
+            		async : false,
+            		success : function(chattingList){
+            			console.log("ajax 성공");
+            			if(chattingList != null){
+            				for(var i in chattingList){
+            					output += "<li class='waves-effect waves-light' onclick='moveChatting(\""+chattingList[i].chnickname+"\", \""+loginNick+"\")'>";
             					output += "<div class='media'>";
-            					output += "<img class='d-flex align-self-center img-radius' src='${pageContext.request.contextPath}/resources/assets/images/avatar-2.jpg' alt='Generic placeholder image'>";
+            					output += "<img class='d-flex align-self-center img-radius' src='" + chattingList[i].chmprofile + "' alt='Generic placeholder image'>";
             					output += "<div class='media-body'>";
-            					output += "<h5 class='notification-user'>" + chattingFriendList[i] + "</h5>";
-            					output += "<p class='notification-msg'>Lorem ipsum dolor sit amet, consectetuer elit.</p>";
-            					output += "<span class='notification-time'>30 minutes ago</span>";
+            					output += "<h5 class='notification-user'>" + chattingList[i].chnickname + "</h5>";
+            					output += "<div id='lastChattingArea'>"
+            					output += "<p class='notification-msg'>" + chattingList[i].chchatting + "</p>";
+            					output += "</div>"
             					output += "</div>";
             					output += "</div>";
-            					output += "</li>";            					
+            					output += "</li>";            					            					
+            					}
             				}
-            				//moveChattingRoom(\""+chattingFriendList[i]+"\", \""+loginId+"\")
-            			}
             		}
             	});
             	$("#chattingListArea").html(output);
@@ -235,6 +239,7 @@
             	location.href = 'moveChatting?friendNick=' + friendNick + '&loginNick=' + loginNick;            	
             }
             
+           
             </script>
             
             

@@ -26,12 +26,21 @@ public class AdminService {
 	@Autowired
 	private HttpSession session;
 	
-	String savePath = "C:\\Users\\b4840\\Documents\\workspace-spring-tool-suite-4-4.10.0.RELEASE\\BodProject\\src\\main\\webapp\\resources\\uploadImg";
+	String savePath = "C:\\springworkspace\\BodProject\\src\\main\\webapp\\resources\\uploadImg";
 	
 	public ModelAndView moveAdminHome() {
 		ModelAndView mav = new ModelAndView();
 		// TODO Auto-generated method stub
 		ArrayList<MemberDto> member = adao.getMemberList();
+		
+		for(int i =0; i < member.size(); i++) {
+			if(member.get(i).getMprofile().contains("http")) {
+			}else {
+				String mprofile = "/resources/uploadImg/userimg/"+member.get(i).getMprofile();
+				member.get(i).setMprofile(mprofile);
+			}	
+		}
+		
 		System.out.println(member);
 		mav.addObject("member", member);
 		mav.setViewName("admin/AdminHome");
@@ -39,6 +48,7 @@ public class AdminService {
 	}
 
 	public ModelAndView deleteMember(String mid, String loginId) {
+		// TODO Auto-generated method stub
 		ModelAndView mav = new ModelAndView();
 		//select bcode by mid(mid가 작성한 board의 bcode 조회)
 		String bcode[] = adao.getBoardBcode(mid);
@@ -185,11 +195,14 @@ public class AdminService {
 		
 		//delete MemberProfile file
 		String mProfile = adao.getMProfile(mid);
-		savePath = "C:\\Users\\b4840\\Documents\\workspace-spring-tool-suite-4-4.10.0.RELEASE\\BodProject\\src\\main\\webapp\\resources\\uploadImg\\userimg";
+		savePath = "C:\\springworkspace\\BodProject\\src\\main\\webapp\\resources\\uploadImg\\userimg";
 		if(mProfile != "basicImg") { //기본 프로필 사진이 아니면
 			File file = new File(savePath, mProfile);
 			file.delete();
 		}
+		//delete Chatting
+		int deleteChatting = adao.deleteChatting(loginId);
+		int deleteChattingRoom = adao.deleteChattingRoom(loginId);
 		//delete MEMBER		
 		int deleteMember = adao.deleteMember(mid);
 		System.out.println("mid , loginId : " + mid + " / " + loginId);
@@ -207,6 +220,13 @@ public class AdminService {
 		ModelAndView mav = new ModelAndView();
 		System.out.println("mid : " + mid);
 		MemberDto member = adao.memberView(mid);
+			if(member.getMprofile().contains("http")) {
+			}else {
+				String mprofile = "/resources/uploadImg/userimg/"+member.getMprofile();
+				member.setMprofile(mprofile);
+			}	
+		
+		
 		mav.addObject("member", member);
 		mav.setViewName("admin/AdminMemberView");
 		return mav;
@@ -275,7 +295,7 @@ public class AdminService {
 		board.setMprofile(mProfile);
 		if(board.getMprofile().contains("http")) {
 		}else {
-			String mprofile = "/controller/resources/uploadImg/userimg/"+board.getMprofile();
+			String mprofile = "/resources/uploadImg/userimg/"+board.getMprofile();
 			board.setMprofile(mprofile);
 		}		
 		String photo[] = adao.getPhotoList(bcode);
@@ -287,7 +307,7 @@ public class AdminService {
 		for(int i = 0; i < commList.size(); i++) {
 			if(commList.get(i).getMprofile().contains("http")) {
 			}else {
-				String mprofile = "/controller/resources/uploadImg/userimg/"+commList.get(i).getMprofile();
+				String mprofile = "/resources/uploadImg/userimg/"+commList.get(i).getMprofile();
 				commList.get(i).setMprofile(mprofile);
 			}
 			commList.get(i).setReplycount(adao.getReplyCount(commList.get(i).getCcode()));
@@ -376,7 +396,7 @@ public class AdminService {
        ModelAndView mav = new ModelAndView();
        
        ArrayList<ReportDto> reportList = adao.getReportList();
-       
+       System.out.println("reportList: " + reportList);
        mav.addObject("report", reportList);
        mav.setViewName("admin/AdminReport");
        return mav;

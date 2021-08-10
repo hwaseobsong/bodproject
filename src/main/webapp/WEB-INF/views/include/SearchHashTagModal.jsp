@@ -88,8 +88,8 @@ $("#searchTag").keyup(function(){
 	
 	function moveHashTag(tagname){
 		var reTag = tagname.replace(/\#/g,'');
-		
-		location.href="moveTagBoardList?tagname="+reTag;
+		var orderby = "likenum";
+		   location.href="moveTagBoardList?tagname="+reTag+"&orderby="+orderby;
 	}
 
 

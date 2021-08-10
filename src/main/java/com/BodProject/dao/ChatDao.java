@@ -25,13 +25,19 @@ public interface ChatDao {
 	@Select("SELECT CHNICK FROM CHATTINGROOM WHERE ROOMCODE = #{roomCode}")
 	String getFrNcik(String roomCode);
 
-	@Select("SELECT CHNICK FROM CHATTINGROOM WHERE ROOMCODE IN (SELECT ROOMCODE FROM CHATTINGROOM WHERE CHNICK = #{loginNick}) AND CHNICK NOT IN (#{loginNick})")
-	String[] getChattingFriendList(String loginNick);
+//	@Select("SELECT CHNICK FROM CHATTINGROOM WHERE ROOMCODE IN (SELECT ROOMCODE FROM CHATTINGROOM WHERE CHNICK = #{loginNick}) AND CHNICK NOT IN (#{loginNick})")
+//	String[] getChattingFriendList(String loginNick);
 
 	@Insert("INSERT INTO CHATTING  VALUES(#{userNick}, #{msg}, SYSDATE, #{roomCode})")
 	int saveMsg(@Param("userNick") String userNick,@Param("msg") String msg,@Param("roomCode") String roomCode);
 
 	@Select("SELECT * FROM CHATTING WHERE CHROOMCODE = #{roomCode} ORDER BY CHDATE")
 	ArrayList<ChattingDto> getChattIngList(@Param("roomCode") String roomCode);
+
+	@Select("SELECT * FROM CHATTINGROOM WHERE CHNICK = #{loginNick}")
+	ArrayList<ChattingRoomDto> getChattingRoomCodeList(@Param("loginNick") String loginNick);
+
+	@Select("SELECT CHATTING.CHNICKNAME AS chnickname, CHATTING.CHCHATTING AS chchatting, MEMBER.MPROFILE AS chmprofile, CHATTING.CHDATE AS chdate FROM CHATTING INNER JOIN MEMBER ON CHATTING.CHNICKNAME = MEMBER.MNICK WHERE CHDATE IN (SELECT MAX(CHDATE) FROM CHATTING WHERE CHROOMCODE = #{roomCode} AND NOT CHNICKNAME = #{loginNick})")
+	ChattingDto getLastChat(@Param("roomCode") String roomCode, @Param("loginNick") String loginNick);
 
 }

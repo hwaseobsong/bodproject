@@ -130,9 +130,9 @@
 									 <!-- 타임라인 시작 -->
 									 <div class="col-lg-8">
 										<div class="row">
-										<h3 style="padding:5px; color:#777; border-left:5px solid #B1C763; font-weight:500;">&nbsp;My Group</h3>
+										<h3 style="padding:5px; color:#777; border-left:5px solid #80a1c2; font-weight:500;">&nbsp;My Group</h3>
 										<button class="mofiBtn" style=" margin:10px 0px 0px 440px; float:right; disply:inline-box;
-										width:120px; height:40px; background-color:#B1C763; color:white; font-weight:500;" 
+										width:120px; height:40px; background-color:#80a1c2; color:white; font-weight:500;" 
 										onclick="location.href='moveGroupCreateForm'">
 										<i class="fas fa-plus"></i>&nbsp;그룹생성</button>	
 									

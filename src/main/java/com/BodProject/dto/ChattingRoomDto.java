@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class ChattingRoomDto {
-	private int roomcode;	
+	private String roomcode;	
 	private String chnick;
 }

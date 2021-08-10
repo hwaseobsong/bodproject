@@ -7,5 +7,6 @@ public class ChattingDto {
 	private String chnickname;
 	private String chchatting;
 	private String chdate;
-	private String chroomcode;		
+	private String chroomcode;	
+	private String chmprofile;
 }

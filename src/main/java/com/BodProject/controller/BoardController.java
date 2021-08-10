@@ -35,10 +35,6 @@ public class BoardController {
 	
 	private ModelAndView mav;
 	
-	File file;
-	int size = 1024*1024*10; // 파일 처리 크기 10MB
-	String savePath =  // 파일 저장 경로 
-			"C:\\springworkspace\\BodProject\\src\\main\\webapp\\resources\\uploadImg";
 	
 	@RequestMapping(value="/boardList")
 	public ModelAndView boardList() {

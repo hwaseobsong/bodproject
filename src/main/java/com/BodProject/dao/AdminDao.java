@@ -172,6 +172,14 @@ public interface AdminDao {
 	   @Delete("DELETE FROM HASHTAG WHERE TAGCODE = #{bcode}")
 	   int deleteBoardTag(String bcode);
 
+	//채팅 삭제
+	@Delete("DELETE FROM CHATTING WHERE CHROOMCODE IN (SELECT ROOMCODE FROM CHATTINGROOM WHERE CHNICK = #{loginId})")
+	int deleteChatting(@Param("loginId") String loginId);
+	   
+	@Delete("DELETE FROM CHATTINGROOM WHERE CHNICK = #{loginId}")
+	int deleteChattingRoom(@Param("loginId") String loginId);
+
+
 	
 
 }
